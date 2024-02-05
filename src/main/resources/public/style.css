@@ -1,0 +1,322 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Merienda One', cursive;
+    font-size: medium;
+}
+header{
+    background-color: #c0dbd2;
+    height: 20vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+#logo{
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+}
+nav a{
+    color:  white;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+main{
+    background: #f3ced7;
+    min-height: 70vh;
+}
+img{
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    border-radius:20px;
+    box-shadow: 5px 8px 12px black;
+    max-width: 100%;
+}
+h1, h2, h3, h4{
+    color: white;
+    text-align: center;
+}
+
+.changeColor{
+    color :rgb(204, 81, 122);
+}
+.imageCenterHome{
+    height: 20rem;
+    width: 50rem;
+    object-fit: cover;
+}
+.containerOneHome{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.containerTwoHome{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;  
+}
+.containerAboutUs{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+.paragraph{
+    height: 200px;
+    width: 300px;
+    font-size: 17px;
+}
+.containerContact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.imageContact{
+    margin: 3rem;
+    height: 300px;
+    width: 600px;
+}
+.containerTable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+table{
+    margin-top: 3rem;
+    color:rgb(82, 4, 34);
+    table-layout: fixed;
+    font-size: 1.1rem;
+    border-collapse: collapse;
+}
+thead{
+    background-color: rgb(204, 81, 122);
+}
+th{
+    padding: 1rem 2rem;
+    font-weight: 700;
+}
+td{
+    padding: 15px;
+    border-bottom: solid 0.1rem rgb(204, 81, 122);
+}
+tbody tr:hover{
+    background-color: white;
+}
+table tr, th, td{
+    border: 1px solid rgb(204, 81, 122);
+    border-collapse: collapse;
+    align-self: center;
+}
+.containerCoursesMain{
+    display: flex;
+    flex-direction: column;
+}
+.containerCourses{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5rem;
+    flex-wrap: wrap;
+}
+.containerMainRaffle{
+    display: flex;
+    flex-direction: column;
+}
+.imageRaffle{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.imageSizeRaffle{
+    height: 190px;
+    width: 290px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+.conainerParendRaffle{
+    display: flex;
+    justify-content: space-around;
+}
+form{
+    margin-top: 1rem;
+    background-color:  #c0dbd2;
+    border-radius: 1rem;
+    width: 35rem;
+    height: 23rem;
+    box-shadow: 5px 8px 12px black;
+    max-width: 100%;
+    font-size: medium;
+}
+.formCheckbox{
+    align-self: center;
+    justify-self: center;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+.genderRaffle{
+    display: flex;
+    justify-content: space-between;
+}
+.spaceSelectPhone{
+    margin-bottom: 1.5rem;
+}
+.spaceRaffle{
+    margin-bottom: 0.5rem; 
+}
+.paymentOptions{
+    display: flex;
+    flex-direction: row-reverse;
+    flex-direction: column;
+}
+.containerService{
+    display: flex;
+    flex-direction: column;
+}
+.formCheckbox{
+    background-color: aliceblue;
+}
+.formInputAddres{
+    margin-left: 1.4rem;
+}
+.formInputCode{
+    margin-left: 0.9rem;
+}
+.formInputAge{
+    margin-left: 3.5rem;
+}
+.formInputPhone{
+    margin-left: 2.3rem;
+}
+.formInputEmail{
+    margin-left: 2.1rem;
+}
+.formInputCountry{
+    margin-left: 1.4rem;
+}
+.fSelectContinent{
+    margin-left: 0.9rem;
+    width: 9.6rem;
+}
+.modificationFooterReffle{
+    height: 23vh;
+}
+.modificationMainReffle{
+    min-height: 62vh;
+}
+.modificationHeader{
+    display: flex;
+    align-items: flex-start;
+    height: 15vh;
+}
+footer{
+    height:10vh ;
+    color: white;
+    background-color: #c0dbd2;
+    display: flex;
+    justify-content: space-between;   
+}
+@media(min-width: 320px) and (max-width: 767px){
+    table{
+        margin-top: 1rem;
+        font-size: 0.5rem;
+
+    }
+    th{
+        padding: 0.5rem 0.5rem;
+        font-weight: 300;
+    }
+    td{
+        padding: 2px;
+    }
+    header{
+        flex-direction: column;
+        min-height: 30vh;
+    }
+    .paymentOptions{
+        flex-direction: row;
+    }
+    .imageRaffle{
+        display: none;
+    }
+    .spaceSelectPhone{
+        margin-bottom: 0rem;
+    }
+    .spaceRaffle{
+        margin-bottom: 0rem; 
+    }
+    h1, h2, h3{
+        font-size:medium;
+    }
+    ul,ol,dl,p {
+        font-size: 0.8rem;
+    }
+    .imageContact{
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+    }
+    .containerContact{
+        height: 50vh;
+    }
+    .modificationFooter{
+        height: 30vh;
+        flex-direction: column;
+    }
+    form{
+        font-size: small;
+    }
+    .formArea{
+        height: 2.2rem;
+    }
+    .row{
+        justify-content: space-between;
+    }
+    .formInputLName{
+        margin-left: 0.3rem;
+    }
+    .formInputAddres{
+        margin-left: 1.2rem;
+    }
+    .formInputCode{
+        margin-left: 1.1rem;
+    }
+    .formInputAge{
+        margin-left: 2.9rem;
+    }
+    .formInputPhone{
+        margin-left: 1.9rem;
+    }
+    .formInputEmail{
+        margin-left: 2.1rem;
+    }
+    .formInputCountry{
+        margin-left: 1.4rem;
+    }
+    .fSelectContinent{
+        margin-left: 0.5rem;
+        width: 10.7rem;
+    }
+}
+@media(min-width: 768px) and (max-width: 1023px){
+    .imageRaffle{
+        display: none;
+    }
+    .form{
+        font-size: medium;
+        height: 17rem;
+    }  
+    .formArea{
+        height: 4rem;
+    } 
+}
+
