@@ -54,7 +54,7 @@ Para probar el funcionamiento, una vez tenga descargado el proyecto y ejecutado 
 
 ### Prueba imagen jpg
 
-![jpg]()
+![jpg](https://github.com/lgar000/Taller2-Arep/blob/main/imagenes/pruebaImagenJPG.png)
 
 ## Diseño
 
