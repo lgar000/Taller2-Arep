@@ -34,7 +34,27 @@ mvn package
 
 ## Pruebas
 
+Para probar el funcionamiento, una vez tenga descargado el proyecto y ejecutado correctamente proceda a ingresar a un navergador, donde debera ingresar http://localhost:35000/archivoSolicitado.extension, donde las extensiones pueden ser (js, html, css, png, jpg). Los archivos a solicitar se encuentra dentro del proyecto.
 
+### Prueba html
+
+![html](https://github.com/lgar000/Taller2-Arep/blob/main/imagenes/pruebaHtml.png)
+
+### Prueba js
+
+![js](https://github.com/lgar000/Taller2-Arep/blob/main/imagenes/pruebaJs.png)
+
+### Prueba css
+
+![css](https://github.com/lgar000/Taller2-Arep/blob/main/imagenes/pruebaCss.png)
+
+### Prueba imagen png
+
+![png](https://github.com/lgar000/Taller2-Arep/blob/main/imagenes/pruebaImagenPNG.png)
+
+### Prueba imagen jpg
+
+![jpg]()
 
 ## Diseño
 
