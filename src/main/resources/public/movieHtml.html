@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Movie search</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-color:#B6F1F1;">
+        <h1>Movie search</h1>
+        <form action="/hello">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value="John"><br><br>
+            <input type="button" value="Submit" onclick="loadGetMsg()">
+        </form> 
+        <div id="getrespmsg"></div>
+        
+        <script>
+            function loadGetMsg() {
+            let nameVar = document.getElementById("name").value;
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                document.getElementById("getrespmsg").innerHTML = this.responseText;
+            }
+            xhttp.open("GET", "/hello?name="+nameVar);
+            xhttp.send();
+            document.getElementById("name").value = "";
+        }
+        </script>
+    <!--<script src="movieJs.js"></script>-->
+    </body>
+</html>

@@ -1,5 +1,9 @@
 package edu.escuelaing.arep.ASE.app;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.net.*;
@@ -8,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class HttpServer {
 
@@ -56,11 +62,20 @@ public class HttpServer {
             System.out.println("file"+ file);
             System.out.println("Find URI: " + file.getPath());
 
-            try {
-                outputLine = httpRequestClient(file.getPath(), clientSocket);
-            } catch (IOException e) {
-                outputLine = httpError();
+            if(uriStr.startsWith("/hello?")){
+                System.out.println("entro en el hello");
+                String movieTitle=getName(uriStr);
+                String movieData=searchDataMovie(movieTitle);
+                outputLine=informationFormat(movieData);
+                System.out.println(outputLine);
+            }else{
+                try {
+                    outputLine = httpRequestClient(file.getPath(), clientSocket);
+                } catch (IOException e) {
+                    outputLine = httpError();
+                }
             }
+
 
             out.println(outputLine);
 
@@ -89,12 +104,57 @@ public class HttpServer {
 
     }
 
+    public static String getName(String uri){
+        String name = uri.replace("/hello?name=", "");
+        return name;
+    }
+
+    public  static String searchDataMovie(String movieTitle) throws IOException {
+        String movieData="";
+        if(Cache.movieInCache(movieTitle)){
+            movieData=Cache.getMovieInCache(movieTitle);
+            return movieData;
+        }else{
+            movieData=HttpConnection.HttpConnection(movieTitle);
+            Cache.saveInCache(movieTitle,movieData);
+            return movieData;
+        }
+    }
+
     /**
-     *
-     * @param path
-     * @param clientSocket
-     * @return
-     * @throws IOException
+     *Método para ordenar la información de la pelicula
+     * @param movieData json con la información de la pelicula consultada
+     * @return conjunto de divs con los datos
+     * @throws JSONException
+     */
+    public static String informationFormat( String movieData) throws JSONException {
+        HashMap<String, String> movieDetails= new HashMap<>();
+        JSONArray jsonArray= new JSONArray(movieData);
+        Iterator<Object> iterator=jsonArray.iterator();
+        while (iterator.hasNext()){
+            JSONObject jsonObject= (JSONObject) iterator.next();
+            for(String key : jsonObject.keySet()){
+                movieDetails.put(key, jsonObject.get(key).toString());
+            }
+        }
+        String data="";
+        for(String key: movieDetails.keySet()){
+            data+="<div>"+key+": "+ movieDetails.get(key)+"</div>";
+        }
+        return "HTTP/1.1 200 OK\r\n"
+                + "Content-type: text/html\r\n"
+                + "\r\n"
+                +data;
+    }
+
+    /**
+     * Se encarga de validar el tipo de archivo(text/html, text/js, text/css, image/jpg, o image/png).)
+     * para construir y retornar el contenido que el cliente solicita.
+     * @param path es un String que representa la dirección del archivo
+     * @param clientSocket el Socket de la conexión del cliente
+     * @return un String con la respuesta solicitada si es js, html o css, si es de tipo imagen
+     * carga la imagen desde el archivo y la envia como parte de la respuesta
+     * @throws IOException maneja los error producidos en la entrada/salida
      */
     public static String httpRequestClient(String path, Socket clientSocket ) throws IOException {
 
@@ -116,7 +176,7 @@ public class HttpServer {
                 + "Content-Type:" + extension + "\r\n"
                 + "\r\n";
         Path page = Paths.get("target/classes/public" + path);
-        if ( extension.startsWith("text/")) {
+        if ( extension.startsWith("text/") ) {
             Charset charset = Charset.forName("UTF-8");
             try (BufferedReader reader = Files.newBufferedReader(page, charset)) {
                 String line;
